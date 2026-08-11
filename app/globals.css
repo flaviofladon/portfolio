@@ -1372,3 +1372,99 @@ h1.name {
     border-radius:0;
   }
 }
+
+/* =========================================================
+   SCROLL GLOBAL — OCULTA A BARRA SEM BLOQUEAR A ROLAGEM
+   ========================================================= */
+
+/*
+ * A página continua rolando normalmente com mouse, touchpad,
+ * teclado e toque. Apenas a barra visual do navegador fica oculta.
+ */
+html {
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  /* Firefox */
+  scrollbar-width: none;
+
+  /* Internet Explorer / Edge legado */
+  -ms-overflow-style: none;
+}
+
+body {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Chrome, Edge, Safari e navegadores WebKit */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+/*
+ * Mantém todos os efeitos decorativos e animações dentro
+ * da largura da página, evitando scroll horizontal.
+ */
+.site-main {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+/* Fallback para navegadores sem suporte a overflow: clip */
+@supports not (overflow: clip) {
+  .site-main {
+    overflow-x: hidden;
+  }
+}
+
+/* =========================================================
+   PROTEÇÃO FINAL — CHAT PRESERVADO NO CANTO INFERIOR DIREITO
+   ========================================================= */
+
+#chat-launcher {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  left: auto;
+  top: auto;
+  z-index: 100;
+}
+
+.chat-panel {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  left: auto;
+  top: auto;
+  z-index: 110;
+}
+
+@media (max-width: 480px) {
+  #chat-launcher {
+    right: 16px;
+    bottom: 16px;
+    left: auto;
+    top: auto;
+  }
+
+  .chat-panel {
+    right: 0;
+    bottom: 0;
+    left: 0;
+    top: auto;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    border-radius: 0;
+  }
+}
