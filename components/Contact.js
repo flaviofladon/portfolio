@@ -30,7 +30,7 @@ export default function Contact() {
       </section>
       <footer>
         <p className="mono">
-          {CONFIG.nome} · {CONFIG.local} · site gerado com currículo real, sem enfeite
+          {CONFIG.nome} · {CONFIG.local} · 2026
         </p>
       </footer>
     </>
