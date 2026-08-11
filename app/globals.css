@@ -29,6 +29,19 @@ body{
   -webkit-font-smoothing:antialiased;
   line-height:1.5;
 }
+
+/* Evita que elementos decorativos criem rolagem horizontal. */
+html,
+body{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden;
+}
+
+.site-main{
+  width:100%;
+  overflow-x:clip;
+}
 h1,h2,h3{
   font-family:'Fraunces',serif;
   font-weight:600;
@@ -279,6 +292,7 @@ nav {
 
 .hero {
   position: relative;
+  overflow: clip;
 }
 
 .hero::after {
@@ -1169,8 +1183,7 @@ h1.name {
    --------------------------------------------------------- */
 
 .btn,
-.cta-nav,
-#chat-launcher {
+.cta-nav {
   position:
     relative;
 
@@ -1313,4 +1326,49 @@ h1.name {
       none !important;
   }
 
+}
+
+/* =========================================================
+   PROTEÇÃO FINAL — CHAT SEMPRE FIXO NO CANTO DIREITO
+   ========================================================= */
+
+#chat-launcher{
+  position:fixed;
+  right:24px;
+  bottom:24px;
+  left:auto;
+  top:auto;
+  z-index:100;
+  overflow:visible;
+}
+
+.chat-panel{
+  position:fixed;
+  right:24px;
+  bottom:24px;
+  left:auto;
+  top:auto;
+  z-index:110;
+  max-width:calc(100vw - 48px);
+}
+
+@media (max-width:480px){
+  #chat-launcher{
+    right:16px;
+    bottom:16px;
+    left:auto;
+    top:auto;
+  }
+
+  .chat-panel{
+    right:0;
+    bottom:0;
+    left:0;
+    top:auto;
+    width:100%;
+    max-width:100%;
+    height:100%;
+    max-height:100%;
+    border-radius:0;
+  }
 }
